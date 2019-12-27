@@ -1,5 +1,7 @@
 from django.urls import path
+from django.views.generic import TemplateView
 from .import views
 urlpatterns = [
-    path('', views.index,name="index"),
+    path('', views.viewlistloai,name="index"),
+    path('list/<int:loai_id>',views.viewlisttintuc,name="list")
 ]

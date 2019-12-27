@@ -1,0 +1,8 @@
+ {% extends 'polls/base.html' %}
+ {% block content %}   
+ {% for item in tintuc.tintuc_set.all %}
+ <br><a href="">{{item.tieu_de}}</a>
+ <p>{{item.ngaytao}}</p>
+ <img src="{{item.hinh.url}}" style="width:200px">
+ {% endfor %}
+ {% endblock %}

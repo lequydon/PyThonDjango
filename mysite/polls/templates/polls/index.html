@@ -1,0 +1,18 @@
+ {% extends 'polls/base.html' %}
+ {% block content %}   
+ {% for item in listloai %}
+ <a href="{% url 'list' item.id %}">{{item.ten_the_loai}}</a>
+ {% endfor %}
+ <br>
+ {% for item in listtintuc %}
+ <br><a href="">{{item.tieu_de}}</a>
+ <p>{{item.ngaytao}}</p>
+ <img src="{{item.hinh.url}}" style="width:200px">
+  {% comment %} <div class="noidung">{{item.noidung}}</div> {% endcomment %}
+  {% comment %} <div class="gg"></div> {% endcomment %}
+{% comment %} <script>
+    //console.log($(".noidung").text());
+    $(".noidung").html($(".noidung").text());
+</script> {% endcomment %}
+ {% endfor %}
+ {% endblock %}
