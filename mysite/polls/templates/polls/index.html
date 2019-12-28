@@ -1,19 +1,220 @@
  {% extends 'polls/base.html' %}
- {% block content %}   
- <a href="{% url 'index' %}">Home</a><br>
- {% for item in listloai %}
- <a href="{% url 'list' item.id %}">{{item.ten_the_loai}}</a>
- {% endfor %}
+ {% block content %}
+ <header>
+        <div class="container-fluid bg-dark menu ">
+            <div class="container ">
+                <!-- menu -->
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
+                
+                    <a class="navbar-brand" href="{% url 'index' %}">
+                        <img src="https://image.freepik.com/free-vector/newspaper-logo_10250-2347.jpg" alt="logo" class="logo">
+                    </a>
+                    
+                    <!-- Links -->
+                    <ul class="navbar-nav">
+                       {% for item in listloai %}
+                       <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'list' item.id %}">{{item.ten_the_loai}}</a>
+                        <li>
+                        {% endfor %}
+                    </ul>
+                    <!-- tìm kiếm -->
+                    {% comment %} <form class="form-inline seach" action="/action_page.php">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-success" type="submit"><i class="fas fa-search"></i></button>
+                    </form> {% endcomment %}
+                </nav>
+            </div>
+        </div>
+    </header>
  <br>
- {% for item in listtintuc %}
+  {% comment %} {% for item in listtintuc %}
  <br><a href="{% url 'tintuc' item.id %}">{{item.tieu_de}}</a>
  <p>{{item.ngaytao}}</p>
- <img src="{{item.hinh.url}}" style="width:200px">
-  {% comment %} <div class="noidung">{{item.noidung}}</div> {% endcomment %}
-  {% comment %} <div class="gg"></div> {% endcomment %}
-{% comment %} <script>
-    //console.log($(".noidung").text());
-    $(".noidung").html($(".noidung").text());
-</script> {% endcomment %}
- {% endfor %}
- {% endblock %}
+ <img src="{{item.hinh.url}}" style="width:200px"> 
+ {% endfor %} {% endcomment %}
+<main>
+        <!-- The slideshow -->
+        <div class="container mt-3 ">
+            <h2>Tin Nóng</h2>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ul class="carousel-indicators">
+                 {% for item in listtintuc %}
+                  <li data-target="#myCarousel" data-slide-to="{{item.id}}"></li>
+                  {% endfor %}
+              </ul>
+              <div class="carousel-inner slideShow">
+              {% for item in listtintuc %}
+              {% if item.id == 1 %}
+                <div class="carousel-item active">
+                    <img src="{{item.hinh.url}}" alt="" width="1100" height="500">
+                    <div class="carousel-caption">
+                        <a href="{% url 'tintuc' item.id %}" class="text"><h3>{{item.tieu_de}}</h3></a>
+                        <p><i>{{item.ngaytao}}</i></p>
+                    </div>
+                </div>
+              {% else %}
+                <div class="carousel-item">
+                    <img src="{{item.hinh.url}}" alt="" width="1100" height="500">
+                    <div class="carousel-caption">
+                        <a href="{% url 'tintuc' item.id %}" class="text"><h3>{{item.tieu_de}}</h3></a>
+                        <p><i>{{item.ngaytao}}</i></p>
+                    </div>
+                </div>
+              {% endif %}
+              {% endfor %}
+              </div>            
+              <!-- Left and right controls -->
+              <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </a>
+              <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </a>
+            </div> <hr>           
+        </div>
+        <!-- Tin Mới -->
+        <div class="container ">
+            <div class="row"><h2>Tin Mới</h2></div>
+            <div class="row">
+              {% for item in listtintuc %}
+              {% if item.id <= 4 %}
+                <div class="col-3">
+                    <a href="{% url 'tintuc' item.id %}">
+                        <img src="{{item.hinh.url}}" alt="" height="250px" width="250px">
+                        <p class="new text"><b>{{item.tieu_de}}</b><br><i>{{item.ngaytao}}</i>
+                        </p>
+                        <p></p>
+                    </a>
+                </div>
+                {% endif %}
+              {% endfor %}
+                
+            </div><hr>
+        </div>
+        <!-- dành cho bạn -->
+        <div class="container">
+            <div class="row"><h2>Dành Cho Bạn</h2></div>
+            <div class="row ">
+            {% for item in listtintuc %}
+            {% if item.id >= 4 %}
+                <div class="col-6 item">
+                    <div class="container-fluid">
+                        <a href="{% url 'tintuc' item.id %}">
+                            <div class="row ">
+                                <div class="col-6 "><img class="img-cart" src="{{item.hinh.url}}" alt="" height="250px" width="250px" ></div>
+                                <div class="col-6 b ">
+                                    <h3>{{item.tieu_de}}</h3>
+                                    <p><i style="color: black;">{{item.ngaytao}}</i></p>
+                                </div>
+                            </div> 
+                        </a>
+                    </div>               
+                </div>
+            {% endif %}
+            {% endfor %}
+            </div>
+            <!-- ------------------- -->
+           
+        </div>
+    </main>
+     <!-- menu -->
+    
+    <!-- end menu  -->
+    <!-- main  -->
+    
+    <!-- end main  -->
+
+    <!-- footer  -->
+   <footer >
+        <div class="container-fluid ">
+           <div class="container">
+               <h2>Nhóm 3</h2>
+               <p> Chúng tôi gồm: Lê Quý Đôn(Nhóm trưởng) <br> Nguyễn Văn Thuận, Nguyễn Đình Tín, Mai Xuân Bình Minh </p>
+               <ul>
+                    <li class="link" style="border: 0;"><a href="">Trang Chủ</a></li>
+                    <li class="link"><a href="">Giới Thiệu</a></li>
+                    <li class="link"><a href="">Liên Hệ</a></li>
+                    <li class="link"><a href="">Quảng Cáo</a></li>
+                    <li class="link"><a href="">Tuyển Dụng</a></li>
+               </ul>
+           </div>
+        </div>
+   </footer>
+  <style>
+  .menu{
+    position: fixed;
+    z-index: 1;
+    top: 0;
+}
+img{
+    object-fit: cover;
+}
+img.logo{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.seach{
+    position: absolute;
+    right: 0;
+}
+main{
+    margin-top: 50px;
+}
+p.new{
+    width: 240px;
+    text-align: center;
+    position: absolute;
+    bottom: 5px;
+    font-size: 20px;
+    color: white;
+}
+.text{
+    color: black;
+    text-align: left;
+    text-indent: 20px;
+    text-transform: capitalize;
+}
+.item{
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+
+i{
+    color: white;
+    font-size: 15px;   
+}
+a{
+    color: black !important;
+    
+}
+a:hover{
+    color: rgb(48, 48, 48) !important;
+    text-decoration: none !important;
+}
+
+img.img-cart:hover{
+    opacity: 0.8;
+}
+footer{
+    padding: 30px;
+    color: rgb(104, 103, 103);
+    background-color: rgb(228, 228, 228);
+    text-align: center;
+}
+ul{
+    display: flex;
+    justify-content: center;
+}
+li.link{
+    margin: 0;
+    padding: 0px 15px;
+    border-left: 1px solid;
+    list-style: none;
+}
+</style>
+{% endblock %}
+   <!-- end  -->

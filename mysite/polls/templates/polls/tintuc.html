@@ -1,17 +1,105 @@
  {% extends 'polls/base.html' %}
  {% block content %}  
- <a href="{% url 'index' %}">Home</a><br> 
- {% for item in listloai %}
- <a href="{% url 'list' item.id %}">{{item.ten_the_loai}}</a>
- {% endfor %}
- <br>
- <br><a href="">{{tintuc.tieu_de}}</a>
- <p>{{tintuc.ngaytao}}</p>
- <h3>{{tintuc.tom_tat}}</h3>
-  <div class="noidung">{{tintuc.noidung}}</div>
-  <div class="gg"></div>
- <script>
+<header>
+        <div class="container-fluid bg-dark menu ">
+            <div class="container ">
+                <!-- menu -->
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
+                
+                    <a class="navbar-brand" href="{% url 'index' %}">
+                        <img src="https://image.freepik.com/free-vector/newspaper-logo_10250-2347.jpg" alt="logo" class="logo">
+                    </a>
+                    
+                    <!-- Links -->
+                    <ul class="navbar-nav">
+                       {% for item in listloai %}
+                       <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'list' item.id %}">{{item.ten_the_loai}}</a>
+                        <li>
+                        {% endfor %}
+                    </ul>
+                    <!-- tìm kiếm -->
+                    {% comment %} <form class="form-inline seach" action="/action_page.php">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-success" type="submit"><i class="fas fa-search"></i></button>
+                    </form> {% endcomment %}
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+       <div class="container">
+           <h1>{{tintuc.tieu_de}}</h1>
+           <p>{{tintuc.ngaytao}}</p>
+           <p>
+               <b>{{tintuc.tom_tat}}</b><br>
+            </p>
+           <div class="noidung">{{tintuc.noidung}}</div>
+        </div>
+   </main>
+    <script>
     //console.log($(".noidung").text());
     $(".noidung").html($(".noidung").text());
-</script>
+    </script>
+  <!-- footer  -->
+  <footer >
+    <div class="container-fluid ">
+       <div class="container">
+           <h2>Nhóm 3</h2>
+           <p> Chúng tôi gồm: Lê Quý Đôn(Nhóm trưởng) <br> Nguyễn Văn Thuận, Nguyễn Đình Tín, Mai Xuân Bình Minh </p>
+           <ul>
+                <li class="link" style="border: 0;"><a href="">Trang Chủ</a></li>
+                <li class="link"><a href="">Giới Thiệu</a></li>
+                <li class="link"><a href="">Liên Hệ</a></li>
+                <li class="link"><a href="">Quảng Cáo</a></li>
+                <li class="link"><a href="">Tuyển Dụng</a></li>
+           </ul>
+       </div>
+    </div>
+</footer>
+<!-- end  -->
+<style>
+.menu{
+    position: fixed;
+    z-index: 1;
+    top: 0;
+}
+img{
+    object-fit: cover;
+    width: 1100px;
+    height: 700px;
+}
+img.logo{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.seach{
+    position: absolute;
+    right: 0;
+}
+
+main{
+    margin-top: 100px;
+}
+p{
+    font-size: 20px;
+}
+footer{
+    padding: 30px;
+    color: rgb(104, 103, 103);
+    background-color: rgb(228, 228, 228);
+    text-align: center;
+}
+ul{
+    display: flex;
+    justify-content: center;
+}
+li.link{
+    margin: 0;
+    padding: 0px 15px;
+    border-left: 1px solid;
+    list-style: none;
+}
+</style>
  {% endblock %}
