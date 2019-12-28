@@ -1,5 +1,6 @@
  {% extends 'polls/base.html' %}
  {% block content %}   
+ <a href="{% url 'index' %}">Home</a><br>
  {% for item in listloai %}
  <a href="{% url 'list' item.id %}">{{item.ten_the_loai}}</a>
  {% endfor %}

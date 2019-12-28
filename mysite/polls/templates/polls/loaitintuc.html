@@ -1,5 +1,9 @@
  {% extends 'polls/base.html' %}
- {% block content %}   
+ {% block content %}
+ <a href="{% url 'index' %}">Home</a><br>
+ {% for item in listloai %}
+ <a href="{% url 'list' item.id %}">{{item.ten_the_loai}}</a>
+ {% endfor %}   
  {% for item in tintuc.tintuc_set.all %}
  <br><a href="{% url 'tintuc' item.id %}">{{item.tieu_de}}</a>
  <p>{{item.ngaytao}}</p>

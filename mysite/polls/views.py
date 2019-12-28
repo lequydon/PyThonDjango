@@ -15,7 +15,8 @@ def viewlistloai(request):
     return render(request,"polls/index.html",context)
 def viewlisttintuc(request, loai_id):
     listtt=Theloai.objects.get(pk=loai_id)
-    return render(request,"polls/loaitintuc.html",{"tintuc":listtt})
+    listloai=Theloai.objects.all()
+    return render(request,"polls/loaitintuc.html",{"tintuc":listtt,"listloai":listloai})
 def viewtintuc(request, tintuc_id):
     listloai=Theloai.objects.all()
     listtt=get_object_or_404(Tintuc,pk=tintuc_id)
@@ -23,7 +24,7 @@ def viewtintuc(request, tintuc_id):
 def viewkey(request):
     #listloai=Theloai.objects.all()
     #listtintuc=Tintuc.objects.all()
-    keytem=request.POST.get("keyget",'')
+    keytem=request.POST["keyget"]
     # for i in listtintuc:
     #     if i.tieu_de.find(key)==-1:
     #         listtintuc.remove(i)
