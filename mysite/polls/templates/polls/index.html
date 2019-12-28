@@ -5,7 +5,7 @@
  {% endfor %}
  <br>
  {% for item in listtintuc %}
- <br><a href="">{{item.tieu_de}}</a>
+ <br><a href="{% url 'tintuc' item.id %}">{{item.tieu_de}}</a>
  <p>{{item.ngaytao}}</p>
  <img src="{{item.hinh.url}}" style="width:200px">
   {% comment %} <div class="noidung">{{item.noidung}}</div> {% endcomment %}

@@ -8,7 +8,13 @@
     <title>Document</title>
 </head>
 <body>
-    <header>My website</header>
+    <a href="{% url 'index' %}">Home</a>
+    {% comment %} <form action="{% url 'key' %}" type="post"> {% endcomment %}
+    {% comment %} <form action="{% url 'key' %}" type="post">
+    {% csrf_token %}
+    <input type="text" name="keyget">
+    <input type="submit" value="tìm kiếm">
+    </form> {% endcomment %}
     <main>
         {% block content %}
         {% endblock %}

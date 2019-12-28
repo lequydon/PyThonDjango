@@ -1,8 +1,16 @@
  {% extends 'polls/base.html' %}
  {% block content %}   
- <h1>đây là template</h1>
- <p>{{name}}</p>
- {% for item in taisan %}
- <p>{{item}}</p>
+ {% for item in listloai %}
+ <a href="{% url 'list' item.id %}">{{item.ten_the_loai}}</a>
  {% endfor %}
+ <br>
+ <br><a href="">{{tintuc.tieu_de}}</a>
+ <p>{{tintuc.ngaytao}}</p>
+ <h3>{{tintuc.tom_tat}}</h3>
+  <div class="noidung">{{tintuc.noidung}}</div>
+  <div class="gg"></div>
+ <script>
+    //console.log($(".noidung").text());
+    $(".noidung").html($(".noidung").text());
+</script>
  {% endblock %}
