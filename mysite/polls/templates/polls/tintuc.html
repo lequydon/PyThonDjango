@@ -19,10 +19,10 @@
                         {% endfor %}
                     </ul>
                     <!-- tìm kiếm -->
-                    {% comment %} <form class="form-inline seach" action="/action_page.php">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <form class="form-inline seach" action="{% url 'key' %}">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search" name="keyget">
                         <button class="btn btn-success" type="submit"><i class="fas fa-search"></i></button>
-                    </form> {% endcomment %}
+                    </form> 
                 </nav>
             </div>
         </div>

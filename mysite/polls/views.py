@@ -51,12 +51,13 @@ def viewkey(request):
             self.hinh = hinh
     listttt = []  
     keytem=request.GET.get("keyget")
+    keytem=keytem.lower()
     for i in listtintuc:
         #print(i.tieu_de)
-        if i.tieu_de.find(keytem)!=-1:
+        if i.tieu_de.lower().find(keytem)!=-1 or i.noidung.lower().find(keytem)!=-1:
             listttt.append(listtt(i.id,i.tieu_de,i.ngaytao,i.hinh))
             #listfindtemp=listfindtemp.append(i) 
             print(i.tieu_de)
-    context={"listloai":listloai,"tintuc":listttt}
+    context={"listloai":listloai,"tintuckey":listttt}
     #return HttpResponse(keytem)
     return render(request,"polls/loaitintuc.html",context)
